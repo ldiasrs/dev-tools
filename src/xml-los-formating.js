@@ -13,13 +13,11 @@ function main() {
     const dirBase = process.env.XML_FORMAT_BASE_DIR;
     const sourceFile = `${dirBase}/test.xml`
     const targetFile = `${dirBase}/test2.xml`
-    console.log(readFile)
     const fileString = readFile(sourceFile)
-    console.log(fileString)
     const xml = normalizeXml(fileString)
     const formatedXml = formatXml(xml)
     printoutput(formatedXml)
-    writeFile(targetFile, formatedXml)
+    //writeFile(targetFile, formatedXml)
 }
 
 main()
