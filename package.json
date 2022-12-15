@@ -1,0 +1,18 @@
+{
+  "name": "dev-tools",
+  "version": "1.0.0",
+  "scripts": {
+    "xml-los-format": "node --experimental-modules src/xml-los-formating.js"
+  },
+  "type":"module",
+  "author": "Leonardo Dias",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "fs": "^0.0.1-security",
+    "xml-formatter": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=12.0"
+  }
+}
