@@ -2,7 +2,8 @@
   "name": "dev-tools",
   "version": "1.0.0",
   "scripts": {
-    "xml-los-format": "node --experimental-modules src/xml-los-formating.js"
+    "xml-los-format": "node --experimental-modules src/xml-los-formating.js",
+    "scrapper": "node --experimental-modules src/puppeteer.js"
   },
   "type":"module",
   "author": "Leonardo Dias",
@@ -10,7 +11,8 @@
   "dependencies": {
     "dotenv": "^16.0.3",
     "fs": "^0.0.1-security",
-    "xml-formatter": "^3.0.2"
+    "xml-formatter": "^3.0.2",
+    "puppeteer": "^18.0.5"
   },
   "engines": {
     "node": ">=12.0"
