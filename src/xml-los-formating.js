@@ -2,7 +2,7 @@ import {readFile, printoutput, writeFile, formatXml} from './commons.js'
 import dotenv from 'dotenv';
 
 function normalizeXml(xml){
-    const regex = /CDATA\[(.*?)\]\]>/
+    const regex = /CDATA\[(.*)\]\]>/
     const found = regex.exec(xml)
     const match =found ? found[1] : xml
     return match.replaceAll(`\\"`, "\"")
@@ -17,7 +17,7 @@ function main() {
     const xml = normalizeXml(fileString)
     const formatedXml = formatXml(xml)
     printoutput(formatedXml)
-    //writeFile(targetFile, formatedXml)
+    writeFile(targetFile, formatedXml)
 }
 
 main()
