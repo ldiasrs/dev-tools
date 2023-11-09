@@ -5,7 +5,10 @@ function normalizeXml(xml){
     const regex = /CDATA\[(.*)\]\]>/
     const found = regex.exec(xml)
     const match =found ? found[1] : xml
-    return match.replaceAll(`\\"`, "\"")
+    if (xml.includes("PERSONAL_LOAN")) {
+        return match.replaceAll(`\\"`, `"`)
+    }
+    return match.replaceAll(`\"`, `"`)
 }
 
 function main() {

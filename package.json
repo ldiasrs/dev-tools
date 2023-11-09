@@ -5,14 +5,16 @@
     "xml-los-format": "node --experimental-modules src/xml-los-formating.js",
     "scrapper": "node --experimental-modules src/puppeteer.js"
   },
-  "type":"module",
+  "type": "module",
   "author": "Leonardo Dias",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.3",
     "fs": "^0.0.1-security",
-    "xml-formatter": "^3.0.2",
-    "puppeteer": "^18.0.5"
+    "papa": "^0.0.0",
+    "papaparse": "^5.3.2",
+    "puppeteer": "^18.0.5",
+    "xml-formatter": "^3.0.2"
   },
   "engines": {
     "node": ">=12.0"
