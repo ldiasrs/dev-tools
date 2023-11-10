@@ -2,11 +2,13 @@ import {readFile, printoutput, writeFile, formatXml} from './commons.js'
 import dotenv from 'dotenv';
 
 function normalizeXml(xml){
-    const regex = /CDATA\[(.*)\]\]>/
+    const regex = /CDATA\[(.*)]]>/
     const found = regex.exec(xml)
     const match =found ? found[1] : xml
     if (xml.includes("PERSONAL_LOAN")) {
-        return match.replaceAll(`\\"`, `"`)
+        const temp = match.replaceAll(`\\""`, `"`)
+        console.log(temp)
+        return temp
     }
     return match.replaceAll(`\"`, `"`)
 }
