@@ -2,8 +2,8 @@
   "name": "dev-tools",
   "version": "1.0.0",
   "scripts": {
-    "xml-los-format": "node --experimental-modules src/xml-los-formating.js",
-    "scrapper": "node --experimental-modules src/puppeteer.js"
+    "login-local": "node src/auto-login-script.js local login 2",
+    "login-sandbox": "node src/auto-login-script.js sandbox login 2"
   },
   "type": "module",
   "author": "Leonardo Dias",
@@ -11,6 +11,7 @@
   "dependencies": {
     "dotenv": "^16.0.3",
     "fs": "^0.0.1-security",
+    "node-xlsx": "^0.24.0",
     "papa": "^0.0.0",
     "papaparse": "^5.3.2",
     "puppeteer": "^18.0.5",

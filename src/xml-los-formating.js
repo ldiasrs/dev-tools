@@ -2,15 +2,20 @@ import {readFile, printoutput, writeFile, formatXml} from './commons.js'
 import dotenv from 'dotenv';
 
 function normalizeXml(xml){
-    const regex = /CDATA\[(.*)]]>/
+    const l360Regex = /<cud:CUDLConnectMessage>(.*)<\/cud:CUDLConnectMessage>/
+    const loansPq = /CDATA\[(.*)]]>/
+    const regex = xml.includes('CDATA') ? loansPq : l360Regex
     const found = regex.exec(xml)
     const match =found ? found[1] : xml
-    if (xml.includes("PERSONAL_LOAN")) {
-        const temp = match.replaceAll(`\\""`, `"`)
-        console.log(temp)
-        return temp
-    }
-    return match.replaceAll(`\"`, `"`)
+    let formated = match.replaceAll(`\\""`, `"`)
+    formated = formated.replaceAll(`\\"`, `"`)
+    formated = formated.replaceAll(`\"`, `"`)
+    formated = formated.replaceAll(`&gt;`, `>`)
+    formated = formated.replaceAll(`&lt;`, `<`)
+    formated = formated.replaceAll(`{"requestBody":"`, ``)
+    formated = formated.replaceAll(`"}`, ``)
+    console.log(formated)
+    return formated
 }
 
 function main() {
