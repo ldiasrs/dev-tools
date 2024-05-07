@@ -29,13 +29,3 @@ function overrideInputValues(partnerId, data) {
     });
   }
 }
-// const partnersConfig = {
-//   skipPartnerConfig : {
-//     memberNumberNext: ["partner1"]
-//   },
-//   inputsValues:{
-//     partner1: {
-//       ssn: "1234"
-//     }
-//   }
-// }
