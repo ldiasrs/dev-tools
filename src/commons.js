@@ -1,20 +1,24 @@
-import { readFileSync, writeFile as _writeFile } from 'fs';
-import format from 'xml-formatter';
+import { readFileSync, writeFile as _writeFile } from "fs";
+import format from "xml-formatter";
 export function readFile(fileName) {
-    return readFileSync(fileName, 'utf8');
+  return readFileSync(fileName, "utf8");
 }
-export function formatXml (xml) {
-    return format(xml);
+export function formatXml(xml) {
+  return format(xml);
+}
+
+export function debug(message) {
+  console.log(`-> ${message}`);
 }
 
 export function printoutput(output) {
-    console.log("\n"+output);
+  console.log("\n" + output);
 }
 
 export function writeFile(filePath, content) {
-    _writeFile(filePath, content, err => {
+  _writeFile(filePath, content, (err) => {
     if (err) {
-        console.error(err);
+      console.error(err);
     }
-    });
+  });
 }

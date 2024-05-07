@@ -2,10 +2,7 @@
   "name": "dev-tools",
   "version": "1.0.0",
   "scripts": {
-    "login-local": "node src/auto-login-script.js local login 2",
-    "login-sandbox": "node src/auto-login-script.js sandbox login 2",
     "xml-los-format": "node --experimental-modules src/xml-los-formating.js",
-    "scrapper": "node --experimental-modules src/puppeteer.js",
     "login-ssn": "node src/auto-login/auto-login-with-ssh.js local"
   },
   "type": "module",

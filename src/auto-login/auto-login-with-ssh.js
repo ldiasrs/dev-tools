@@ -1,6 +1,6 @@
 import { launch } from "puppeteer";
 import { getAutoLoginData } from "./get-auto-loging-config.js";
-import { debug } from "../helpers.js";
+import { debug } from "../commons.js";
 import { getURL } from "./config.js";
 
 class UIRobot {
