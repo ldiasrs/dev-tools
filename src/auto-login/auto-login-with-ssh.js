@@ -1,9 +1,9 @@
 import { launch } from "puppeteer";
 import { getAutoLoginData } from "./get-auto-loging-config.js";
 import { debug } from "../helpers.js";
+import { getURL } from "./config.js";
 
 class UIRobot {
-
   async clickButton(component) {
     if (component.skip) {
       debug(`Skipping ${component.alias}`);
@@ -19,23 +19,26 @@ class UIRobot {
       debug(`Skipping ${component.alias}`);
       return;
     }
-    debug(`Typing on input: ${component.alias}, value: ${component.value}, selector: ${component.selector}`);
+    debug(
+      `Typing on input: ${component.alias}, value: ${component.value}, selector: ${component.selector}`
+    );
     await this.page.waitForSelector(component.selector);
     await this.page.type(component.selector, component.value);
   }
 
   async gotToPage(url) {
     if (this.page) {
-      debug("Returning existing page"+this.page);
+      debug("Returning existing page" + this.page);
       return this.page;
     }
     debug("Creating new page");
     const browser = await launch({
       headless: false,
-      executablePath: "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+      executablePath:
+        "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
       defaultViewport: null,
     });
-    this.page= await browser.newPage();
+    this.page = await browser.newPage();
     debug("Returning new page" + this.page);
     debug(`Going to ${url}`);
     await this.page.goto(url);
@@ -43,7 +46,6 @@ class UIRobot {
 }
 
 class AutoLoging {
-
   constructor(appContext) {
     this.appContext = appContext;
     this.robot = appContext.robot;
@@ -75,24 +77,21 @@ class AutoLoging {
   }
 }
 
-
 const getAppContext = () => {
-
   const env = process.argv[2];
   const partner = process.argv[3];
 
-  const url =
-  env == "local" ? `http://${partner}.local.clutchapi.com:3002/` : `https://${partner}.sandbox.clutchapi.dev/`;
+  const url = getURL(env, partner);
   debug(`Env: ${env}`);
   debug(`Partner: ${partner}`);
   debug(`URL: ${url}`);
-  
+
   return {
-  url,
-  env,
-  partner,
-  data: getAutoLoginData(env, partner),
-  robot: new UIRobot(),
-  }
-}
-new AutoLoging(getAppContext()).flowWithSSN()
+    url,
+    env,
+    partner,
+    data: getAutoLoginData(env, partner),
+    robot: new UIRobot(),
+  };
+};
+new AutoLoging(getAppContext()).flowWithSSN();

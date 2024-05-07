@@ -13,7 +13,7 @@ function overrideSkips(partnerId, data) {
       (p) => p === partnerId
     );
     if (skip) {
-      envData.buttons[key].skip = true;
+      data.buttons[key].skip = true;
     }
   });
 }
