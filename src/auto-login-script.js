@@ -8,6 +8,7 @@ const selectors = {
   },
   buttons: {
     dissmisTestAlert: "#__next > div.SandboxBannerstyled__Container-sc-1m8844-0.gsNrFq > div.SandboxBannerstyled__Content-sc-1m8844-1.SandboxBannerstyled__ContentButton-sc-1m8844-2.gJBCMd.iGJYkl > button",
+    dissmisTestAlertLocal: "#__next > div.SandboxBannerstyled__Container-sc-1m8844-0.gPzDyC > div.SandboxBannerstyled__Content-sc-1m8844-1.SandboxBannerstyled__ContentButton-sc-1m8844-2.gJBCMd.jdaLHp > button",
     getStart: "//button[contains(., 'started')]",
     proceedWithouPhone: "//button[contains(., 'PROCEED')]",
     proceedWithouPhoneConfirmation: "//button[contains(., 'PROCEED')]",
@@ -170,7 +171,7 @@ async function getStartPage() {
   if (button) {
     await button.click();
   }
-  await page.click(selectors.buttons.dissmisTestAlert);
+  await page.click(env=="local" ? selectors.buttons.dissmisTestAlertLocal : selectors.buttons.dissmisTestAlert);
   return page;
 }
 
@@ -189,7 +190,7 @@ const checkAnnualIncome = () => {
 };
 
 const checkCitizenship = () => {
-  const notCheckOn = ["americafirst", "americafirst-demo", "eecu", "cuofamerica", "dcu"];
+  const notCheckOn = ["americafirst", "americafirst-demo", "eecu", "cuofamerica", "dcu", "wingsfinancial"];
   const check = !notCheckOn.includes(partner);
   debug(`--> checkCitizenship: ${check}`);
   return check;
